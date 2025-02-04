@@ -1,0 +1,21 @@
+Voici une liste détaillée du matériel nécessaire pour créer la topologie complète correspondant à votre plan d'adressage :
+
+Commutateurs (Switches) :
+Commutateurs Ethernet prenant en charge le routage inter-VLAN et la configuration des VLANs, tels que :
+Cisco Catalyst 2960 Series ou supérieur
+
+Routeurs :
+Routeurs prenant en charge les protocoles de routage et la configuration des interfaces de sous-réseau, tels que :
+Cisco ISR (Integrated Services Router)
+Router-PT-Empty
+
+
+Câbles Ethernet :
+Câbles Ethernet de longueurs appropriées pour connecter les périphériques aux commutateurs et aux routeurs.
+
+Périphériques réseau :
+Ordinateurs (PC ou laptops) pour chaque LAN/VLAN
+Serveurs (WEB et TFTP)
+
+Matériel de gestion :
+Consoles de gestion pour la configuration et le contrôle des commutateurs et routeurs

@@ -1,0 +1,50 @@
+LAN2:
+Vlan 30
+ip access-list extended formationA
+ permit ip 172.16.64.0 0.0.1.255 172.16.66.0 0.0.1.255
+ permit ip 172.16.64.0 0.0.1.255 172.16.68.0 0.0.0.63
+ permit ip 172.16.64.0 0.0.1.255 161.3.131.0 0.0.0.7
+ permit ip 172.16.64.0 0.0.1.255 172.16.68.64 0.0.0.31
+
+interface gigabitEthernet 0/0.30
+ ip access-group formationA in
+
+Vlan 40
+ip access-list extended formationB
+ permit ip 172.16.66.0 0.0.1.255 172.16.64.0 0.0.1.255
+ permit ip 172.16.66.0 0.0.1.255 172.16.68.0 0.0.0.63
+ permit ip 172.16.66.0 0.0.1.255 161.3.131.0 0.0.0.7
+ permit ip 172.16.66.0 0.0.1.255 172.16.68.64 0.0.0.31
+
+interface gigabitEthernet 0/0.40
+ ip access-group formationB in
+
+vlan 100
+ip access-list extended enseignant
+ permit ip 172.16.68.0 0.0.0.63 172.16.66.0 0.0.1.255
+ permit ip 172.16.68.0 0.0.0.63 172.16.64.0 0.0.1.255
+ permit ip 172.16.68.0 0.0.0.63 161.3.131.0 0.0.0.7
+ permit ip 172.16.68.0 0.0.0.63 172.16.68.64 0.0.0.31
+ permit tcp 172.16.68.0 0.0.0.63 172.16.102.128 0.0.0.31 eq ftp
+
+interface gigabitEthernet 0/0.100
+ ip access-group enseignant in
+
+
+
+vlan 20
+ip access-list extended service
+ permit tcp 172.16.68.64 0.0.0.31 172.16.102.128 0.0.0.31 eq ftp
+
+interface gigabitEthernet 0/0.20
+ ip access-group service in
+
+
+vlan 10
+ip access-list extended admin
+ deny ip any 172.16.105.96 0.0.0.15
+ permit ip 172.16.105.96 0.0.0.15 161.3.131.0 0.0.0.7
+ permit ip 172.16.105.96 0.0.0.15 172.16.68.0 0.0.0.63
+
+interface gigabitEthernet 0/0.10
+ ip access-group admin in
